@@ -15,6 +15,8 @@ object Main {
     val spark = SparkSession.builder.appName("MrMarket").master("local[2]").getOrCreate()
     val data = spark.read.format("libsvm").load("../data/sample_libsvm_data.txt")
 
+    println(data)
+    
     // Automatically identify categorical features, and index them.
     // Set maxCategories so features with > 4 distinct values are treated as continuous.
     val featureIndexer = new VectorIndexer()
